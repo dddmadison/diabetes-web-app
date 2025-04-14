@@ -40,8 +40,8 @@ data.info()
 
 print("\nStep 2 - Prepare the data for the model building")
 # extract the X and y from the imported data
-X = data.values[:, :8]
-y = data.values[:, 8]
+X = data.values[:,0:8]
+y = data.values[:,8]
 
 # use MinMaxScaler to fit a scaler object
 scaler = MinMaxScaler()

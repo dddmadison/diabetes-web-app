@@ -14,7 +14,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
 
-Bootstrap5 = Bootstrap5(app)
+bootstrap = Bootstrap5(app)
 
 class LabForm(FlaskForm):
     preg = StringField('# Pregnancies', validators=[DataRequired()])
@@ -36,15 +36,14 @@ def index():
 def lab():
     form = LabForm()
     if form.validate_on_submit():
-        X_test = np.array([
-            float(form.preg.data),
-            float(form.glucose.data),
-            float(form.blood.data),
-            float(form.skin.data),
-            float(form.insulin.data),
-            float(form.bmi.data),
-            float(form.dpf.data),
-            float(form.age.data)])
+        X_test = np.array([float(form.preg.data),
+                           float(form.glucose.data),
+                           float(form.blood.data),
+                           float(form.skin.data),
+                           float(form.insulin.data),
+                           float(form.bmi.data),
+                           float(form.dpf.data),
+                           float(form.age.data)])
         print(X_test.shape)
         print(X_test)
 
@@ -69,4 +68,4 @@ def lab():
     return render_template('prediction.html', form=form)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
